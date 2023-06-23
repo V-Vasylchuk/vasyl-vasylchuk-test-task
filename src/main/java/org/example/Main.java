@@ -24,17 +24,15 @@ public class Main {
         User user3 = User.createUser("Charlie", 20);
         User user4 = User.createUser("John", 27);
 
-        Product realProduct1 = ProductFactory.createRealProduct("Product A", 20.50,
-                                                            10, 25);
-        Product realProduct2 = ProductFactory.createRealProduct("Product B", 50,
-                                                            6, 17);
+        Product realProduct1 = ProductFactory
+                .createRealProduct("Product A", 20.50, 10, 25);
+        Product realProduct2 = ProductFactory
+                .createRealProduct("Product B", 50, 6, 17);
 
         Product virtualProduct1 = ProductFactory.createVirtualProduct("Product C",
-                                                                100, "xxx",
-                LocalDate.of(2023, 5, 12));
+                100, "xxx", LocalDate.of(2023, 5, 12));
         Product virtualProduct2 = ProductFactory.createVirtualProduct("Product D",
-                                                                81.25, "yyy",
-                LocalDate.of(2024, 6, 20));
+                81.25, "yyy", LocalDate.of(2024, 6, 20));
 
         List<Order> orders = new ArrayList<>() {
             {
