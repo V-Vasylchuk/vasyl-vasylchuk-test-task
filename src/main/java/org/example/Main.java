@@ -5,7 +5,6 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -128,17 +127,13 @@ public class Main {
     }
 
     private static Map<Order, Integer> calculateWeightOfEachOrder(List<Order> orders) {
-        Map<Order, Integer> weightMap = new HashMap<>();
-        for (Order order : orders) {
-            int totalWeight = 0;
-            for (Product product : order.getProducts()) {
-                if (product instanceof RealProduct) {
-                    RealProduct realProduct = (RealProduct) product;
-                    totalWeight += realProduct.getWeight();
-                }
-            }
-            weightMap.put(order, totalWeight);
-        }
-        return weightMap;
+        return orders.stream()
+                .collect(Collectors.toMap(
+                        order -> order,
+                        order -> order.getProducts().stream()
+                                .filter(product -> product instanceof RealProduct)
+                                .mapToInt(product -> ((RealProduct) product).getWeight())
+                                .sum()
+                ));
     }
 }
