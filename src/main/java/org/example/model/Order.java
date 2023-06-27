@@ -17,14 +17,4 @@ public class Order {
     public static Order createOrder(User user, List<Product> products) {
         return new Order(user, products);
     }
-    /*private List<Double> prices;
-
-    public static Order createOrder(User user, List<Product> products) {
-        Order order = new Order();
-        order.setUser(user);
-        order.setPrices(products.stream()
-                                .map(Product::getPrice)
-                                .collect(Collectors.toList()));
-        return order;
-    }*/
 }
